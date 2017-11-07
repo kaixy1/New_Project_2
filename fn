@@ -1,0 +1,1527 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.7).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `#!/bin/sh' line above, then type `sh FILE'.
+#
+lock_dir=_sh28037
+# Made on 2017-04-04 22:51 EDT by <n01048046@osprey.unfcsd.unf.edu>.
+# Source directory was `/home/46/n01048046/Complier/p2'.
+#
+# Existing files will *not* be overwritten, unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#    331 -rw-r--r-- makefile
+#     26 -rwxrwxrwx p2
+#   1569 -rw-r--r-- doc.txt
+#   5326 -rw-r--r-- Lexical_Analysis.java
+#    378 -rw-r--r-- Main.java
+#    776 -rw-r--r-- readfile.java
+#  28161 -rw-r--r-- semantic_Analysis_1.java
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir ;;
+    esac
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and'
+  ${echo} 'installing GNU `touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir}
+then : ; else ${echo} 'lock directory '${lock_dir}' exists'
+  exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} 'x - created lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to create lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+# ============= makefile ==============
+if test -f 'makefile' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING makefile (file already exists)'
+else
+${echo} 'x - extracting makefile (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'makefile' &&
+all: Main.class Lexical_Analysis.class readfile.class  semantic_Analysis_1.class
+X
+Main.class: Main.java
+X	javac Main.java
+Lexical_Analysis.class: Lexical_Analysis.java
+X	javac Lexical_Analysis.java
+readfile.class: readfile.java
+X	javac readfile.java
+semantic_Analysis_1.class: semantic_Analysis_1.java
+X	javac semantic_Analysis_1.java
+SHAR_EOF
+  (set 20 17 04 02 23 32 13 'makefile'; eval "$shar_touch") &&
+  chmod 0644 'makefile'
+if test $? -ne 0
+then ${echo} 'restore of makefile failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'makefile: MD5 check failed'
+       ) << \SHAR_EOF
+93e3a1c745fa9ddddac93b65f8464a8f  makefile
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'makefile'` -ne 331 && \
+  ${echo} 'restoration warning:  size of makefile is not 331'
+  fi
+fi
+# ============= p2 ==============
+if test -f 'p2' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p2 (file already exists)'
+else
+${echo} 'x - extracting p2 (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'p2' &&
+X	#!/bin/bash java Main $1
+SHAR_EOF
+  (set 20 17 04 02 23 41 56 'p2'; eval "$shar_touch") &&
+  chmod 0777 'p2'
+if test $? -ne 0
+then ${echo} 'restore of p2 failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p2: MD5 check failed'
+       ) << \SHAR_EOF
+b9d48a6f9c79ed2f8a7d197448a3583b  p2
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p2'` -ne 26 && \
+  ${echo} 'restoration warning:  size of p2 is not 26'
+  fi
+fi
+# ============= doc.txt ==============
+if test -f 'doc.txt' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING doc.txt (file already exists)'
+else
+${echo} 'x - extracting doc.txt (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 doc.txt
+M22!H879E(&QE87)N="!H;W<@82!P87)S97(@8V]N<W1R=6-T<R!P87)S92!T
+M<F5E<R!I;B!T:&4@<WEN=&%X(&%N86QY<VES('!H87-E+B!4:&4@<&QA:6X@
+M<&%R<V4M=')E92!C;VYS=')U8W1E9"!I;B!T:&%T('!H87-E(&ES(&=E;F5R
+M86QL>2!O9B!N;R!U<V4@9F]R(&$@8V]M<&EL97(L(&%S(&ET(&1O97,@;F]T
+M(&-A<G)Y(&%N>2!I;F9O<FUA=&EO;B!O9B!H;W<@=&\@979A;'5A=&4@=&AE
+M('1R964N(%1H92!P<F]D=6-T:6]N<R!O9B!C;VYT97AT+69R964@9W)A;6UA
+M<BP@=VAI8V@@;6%K97,@=&AE(')U;&5S(&]F('1H92!L86YG=6%G92P@9&\@
+M;F]T(&%C8V]M;6]D871E(&AO=R!T;R!I;G1E<G!R970@=&AE;2X*4V5M86YT
+M:6-S(&]F(&$@;&%N9W5A9V4@<')O=FED92!M96%N:6YG('1O(&ET<R!C;VYS
+M=')U8W1S+"!L:6ME('1O:V5N<R!A;F0@<WEN=&%X('-T<G5C='5R92X@4V5M
+M86YT:6-S(&AE;'`@:6YT97)P<F5T('-Y;6)O;',L('1H96ER('1Y<&5S+"!A
+M;F0@=&AE:7(@<F5L871I;VYS('=I=&@@96%C:"!O=&AE<BX@4V5M86YT:6,@
+M86YA;'ES:7,@:G5D9V5S('=H971H97(@=&AE('-Y;G1A>"!S=')U8W1U<F4@
+M8V]N<W1R=6-T960@:6X@=&AE('-O=7)C92!P<F]G<F%M(&1E<FEV97,@86YY
+M(&UE86YI;F<@;W(@;F]T+@I!='1R:6)U=&4@9W)A;6UA<B!I<R!A('-P96-I
+M86P@9F]R;2!O9B!C;VYT97AT+69R964@9W)A;6UA<B!W:&5R92!S;VUE(&%D
+M9&ET:6]N86P@:6YF;W)M871I;VX@*&%T=')I8G5T97,I(&%R92!A<'!E;F1E
+M9"!T;R!O;F4@;W(@;6]R92!O9B!I=',@;F]N+71E<FUI;F%L<R!I;B!O<F1E
+M<B!T;R!P<F]V:61E(&-O;G1E>'0M<V5N<VET:79E(&EN9F]R;6%T:6]N+B!%
+M86-H(&%T=')I8G5T92!H87,@=V5L;"UD969I;F5D(&1O;6%I;B!O9B!V86QU
+M97,L('-U8V@@87,@:6YT96=E<BP@9FQO870L(&-H87)A8W1E<BP@<W1R:6YG
+M+"!A;F0@97AP<F5S<VEO;G,N"D%T=')I8G5T92!G<F%M;6%R(&ES(&$@;65D
+M:75M('1O('!R;W9I9&4@<V5M86YT:6-S('1O('1H92!C;VYT97AT+69R964@
+M9W)A;6UA<B!A;F0@:70@8V%N(&AE;'`@<W!E8VEF>2!T:&4@<WEN=&%X(&%N
+M9"!S96UA;G1I8W,@;V8@82!P<F]G<F%M;6EN9R!L86YG=6%G92X@071T<FEB
+M=71E(&=R86UM87(@*'=H96X@=FEE=V5D(&%S(&$@<&%R<V4M=')E92D@8V%N
+M('!A<W,@=F%L=65S(&]R(&EN9F]R;6%T:6]N(&%M;VYG('1H92!N;V1E<R!O
+M9B!A('1R964N"@I->2!P<F]J96-T(&ES('1O('5S92!T:&4@9W)A;6UA<B!D
+M969I;FET:6]N(&EN('1H92!A<'!E;F1I>`IO9B!T:&4@=&5X="!T;R!G=6ED
+M92!T:&4@8V]N<W1R=6-T:6]N(&]F(&$@<F5C=7)S:79E(&1E<V-E;G0@<&%R
+M<V5R+@I4:&4@<&%R<V5R(&%L<F5A9'D@9F]L;&]W<R!T:&4@9W)A;6UA<B!A
+M<R!D97-C<FEB960@:6X@02XR('!A9V4@-#DR+@H*22!E;FAA;F-E9"!T:&4@
+M9W)A;6UA<B!T;R!I;F-L=61E($9,3T%4(&%S"F%P<')O<')I871E('1H<F]U
+M9VAO=70@86QL('1H92!G<F%M;6%R(')U;&5S+@H*57!O;B!E>&5C=71I;VXL
+G(&UY('!R;VIE8R!R97!O<G0@"@I!0T-%4%0*"F]R(`H*4D5*14-4
+`
+end
+SHAR_EOF
+  (set 20 17 04 04 22 44 12 'doc.txt'; eval "$shar_touch") &&
+  chmod 0644 'doc.txt'
+if test $? -ne 0
+then ${echo} 'restore of doc.txt failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'doc.txt: MD5 check failed'
+       ) << \SHAR_EOF
+2c7d647904775bba42b9cf52cf83b50e  doc.txt
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'doc.txt'` -ne 1569 && \
+  ${echo} 'restoration warning:  size of doc.txt is not 1569'
+  fi
+fi
+# ============= Lexical_Analysis.java ==============
+if test -f 'Lexical_Analysis.java' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING Lexical_Analysis.java (file already exists)'
+else
+${echo} 'x - extracting Lexical_Analysis.java (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 Lexical_Analysis.java
+M:6UP;W)T(&IA=F$N=71I;"Y!<G)A>4QI<W0["FEM<&]R="!J879A+G5T:6PN
+M<F5G97@N4&%T=&5R;CL*:6UP;W)T(&IA=F$N=71I;"YR96=E>"Y-871C:&5R
+M.PH*<'5B;&EC("!C;&%S<R!,97AI8V%L7T%N86QY<VES('L*("`@<'5B;&EC
+M('-T871I8R!!<G)A>4QI<W0\4W1R:6YG/B!S879E5&]K96YS7T=R86T@/2!N
+M97<@07)R87E,:7-T/%-T<FEN9SXH*3LO+T-R96%T:6YG(&%R<F%Y;&ES=#L*
+M("`@('!U8FQI8R!S=&%T:6,@07)R87E,:7-T/%-T<FEN9SX@=&]K96Y4>7!E
+M7T=R86T@/2!N97<@07)R87E,:7-T/%-T<FEN9SXH*3LO+T-R96%T:6YG(&%R
+M<F%Y;&ES=#L*("`@('!U8FQI8R!S=&%T:6,@=F]I9"!M86EN7U!A<G-I;F<H
+M4W1R:6YG(&9I;&5?:6YP=70I"B`@("!["@H@("`@("`@("\O($$@4W1R:6YG
+M('1E<W0@9F]R(&EN<'5T(&)E9F]R92!C:&%N9V5D('1O(')E860@:70@9G)O
+M;2!A(&9I;&4*("`@("`@("`O+U-T<FEN9R!I;G!U="`]("(O*C$Q*S(R+3,S
+M=&=E9V4T-#4U*RLK*S,N-44T*S<N.'M]>WU[?7M]*BHJ*CUO=6AO=2D[*RHO
+M*"@H*'EI;G1C9V$H:6YT>"QF;&]A='DI>5MI;G1=/3T@<F5T=7)N(#LB.PH*
+M("`@("`@("`O+R!#<F5A=&4@=&]K96YS(&%N9"!P<FEN="!T:&5M"B`@("`@
+M("`@07)R87E,:7-T/%1O:V5N/B!T;VME;G,@/2!L97@H9FEL95]I;G!U="D[
+M"@H@("`@("`@("\O($D@8V]M;65N=&5D(&)E8V%U<V4@22!D;VXG="!N965D
+M('1O('!R:6YT('1H92!T;VME;G,@86YY(&UO<F4*("`@("`@("`O+R!B>2!T
+M:&4@=V%Y('1H:7,@:7,@86X@861V86YC92!F;W(@;&]O<`H@("`@("`@("\O
+M9F]R("A4;VME;B!T;VME;B`Z('1O:V5N<RD*("`@("`@("`@("`@+R]3>7-T
+M96TN;W5T+G!R:6YT;&XH=&]K96XI.PH@("`@?0H*("`@('!U8FQI8R!E;G5M
+M(%1O:V5N5'EP92!["@H@("`@("`@("\O(%1O:V5N(%)E9V5X"B`@("`@("`@
+M1&]U8FQE0V]M;65N=',H(EQ<+UQ<*B@N*BE<7"I<7"\B*2`L($M%65=/4D0H
+M(F5L<V5\:69\:6YT?')E='5R;GQV;VED?'=H:6QE?&9L;V%T(BDL($9,3T%4
+M*")<7&0K6RY=7%QD*RA;17QE75LK+5T_7%QD*RD_(BDL($Y532@B6S`M.5TK
+M(BDL($U)6%-014-)04PH(CT]?#P]?#X]?"$](BDL4U!%0TE!3"@B7%PJ?"]\
+M7%PK?"U\/'P^?#U\.WPL?%Q<*'Q<7"E\7%Q;?%Q<77Q<7'M\7%Q](BDL($E$
+M*");82UZ02U:72LB*2P@5TA)5$534$%#12@B6R!<=%QF7')<;ETK(BD["@H@
+M("`@("`@('!U8FQI8R!F:6YA;"!3=')I;F<@<&%T=&5R;CL*"B`@("`@("`@
+M5&]K96Y4>7!E*%-T<FEN9R!P871T97)N*2!["B`@("`@("`@("`@('1H:7,N
+M<&%T=&5R;B`]('!A='1E<FX["B`@("`@("`@?0H@("`@?0H*("`@('!U8FQI
+M8R!S=&%T:6,@8VQA<W,@5&]K96X*("`@('L*("`@("`@("!P=6)L:6,@5&]K
+M96Y4>7!E('1Y<&4["B`@("`@("`@<'5B;&EC(%-T<FEN9R!D871A.PH*("`@
+M("`@("!P=6)L:6,@5&]K96XH5&]K96Y4>7!E('1Y<&4L(%-T<FEN9R!D871A
+M*0H@("`@("`@('L*("`@("`@("`@("`@+R\@=&AI<RX@<F5A9"!M;W)E(&%B
+M;W5T(&ET"B`@("`@("`@("`@("\O:'1T<',Z+R]D;V-S+F]R86-L92YC;VTO
+M:F%V87-E+W1U=&]R:6%L+VIA=F$O:F%V84]/+W1H:7-K97DN:'1M;`H@("`@
+M("`@("`@("!T:&ES+G1Y<&4@/2!T>7!E.PH@("`@("`@("`@("!T:&ES+F1A
+M=&$@/2!D871A.PH@("`@("`@('T*"B`@("`@("`@("`@("\O(&ET('-U<'!O
+M<V5D('1O(&)E(&]V97)R:61E('1H92!R971U<FX@+BX*("`@("`@("`@("`@
+M+R\@:'1T<',Z+R]D;V-S+F]R86-L92YC;VTO:F%V87-E+W1U=&]R:6%L+VIA
+M=F$O26%N9$DO;W9E<G)I9&4N:'1M;`H@("`@("`@($!/=F5R<FED90H@("`@
+M("`@('!U8FQI8R!3=')I;F<@=&]3=')I;F<H*2!["B`@("`@("`@("`@(')E
+M='5R;B!3=')I;F<N9F]R;6%T*"(H)7,@)7,I(BP@='EP92YN86UE*"DL(&1A
+M=&$I.PH@("`@("`@('T*("`@('T*"B`@("`O+R`@5&AI<R!A<G)A>2!,:7-T
+M('-A=F5S('1O:V5N"B`@("!P=6)L:6,@<W1A=&EC($%R<F%Y3&ES=#Q4;VME
+M;CX@;&5X*%-T<FEN9R!I;G!U="D@>PH*"@H*("`@("`@("`O+R!4:&4@=&]K
+M96YS('1O(')E='5R;@H@("`@("`@($%R<F%Y3&ES=#Q4;VME;CX@=&]K96YS
+M(#T@;F5W($%R<F%Y3&ES=#Q4;VME;CXH*3L*"B`@("`@("`@+R\@4W1A<G1I
+M;F<@=&AE(&UA:6X@;&]G:6,@9F]R($QE>&EC86P@9G)O;2!H97)E("XN+B!,
+M970G<R!'3PH@("`@("`@(%-T<FEN9T)U9F9E<B!T;VME;E!A='1E<FYS0G5F
+M9F5R(#T@;F5W(%-T<FEN9T)U9F9E<B@I.PH@("`@("`@(&9O<B`H5&]K96Y4
+M>7!E('1O:V5N5'EP92`Z(%1O:V5N5'EP92YV86QU97,H*2D*("`@("`@("`@
+M("`@=&]K96Y0871T97)N<T)U9F9E<BYA<'!E;F0H4W1R:6YG+F9O<FUA="@B
+M?"@_/"5S/B5S*2(L('1O:V5N5'EP92YN86UE*"DL('1O:V5N5'EP92YP871T
+M97)N*2D["B`@("`@("`@4&%T=&5R;B!T;VME;E!A='1E<FYS(#T@4&%T=&5R
+M;BYC;VUP:6QE*&YE=R!3=')I;F<H=&]K96Y0871T97)N<T)U9F9E<BYS=6)S
+M=')I;F<H,2DI*3L*"B`@("`@("`@+R\@4W1A<G1I;F<@=&\@;6%T8V@@=&]K
+M96YS"B`@("`@("`@36%T8VAE<B!M871C:&5R(#T@=&]K96Y0871T97)N<RYM
+M871C:&5R*&EN<'5T*3L*("`@("`@("!W:&EL92`H;6%T8VAE<BYF:6YD*"DI
+M"B`@("`@("`@>PH@("`@("`@("`@("`O+R!$;W5B;&4@8V]M;65N=',@;6%T
+M8VAI;F<@86YD('-K:7!P:6YG"B`@("`@("`@("`@(&EF("AM871C:&5R+F=R
+M;W5P*%1O:V5N5'EP92Y$;W5B;&5#;VUM96YT<RYN86UE*"DI("$](&YU;&PI
+M"B`@("`@("`@("`@('L*("`@("`@("`@("`@("`@(&EF("AM871C:&5R+F=R
+M;W5P*%1O:V5N5'EP92Y$;W5B;&5#;VUM96YT<RYN86UE*"DI("$](&YU;&PI
+M"B`@("`@("`@("`@("`@("!C;VYT:6YU93L*("`@("`@("`@("`@?0H@("`@
+M("`@("`@("`O+R!K97EW;W)D(&UA=&-H:6YG"B`@("`@("`@("`@(&5L<V4@
+M:68@*&UA=&-H97(N9W)O=7`H5&]K96Y4>7!E+DM%65=/4D0N;F%M92@I*2`A
+M/2!N=6QL*2!["B`@("`@("`@("`@("`@("!T;VME;G,N861D*&YE=R!4;VME
+M;BA4;VME;E1Y<&4N2T595T]21"P@;6%T8VAE<BYG<F]U<"A4;VME;E1Y<&4N
+M2T595T]21"YN86UE*"DI*2D["B`@("`@("`@("`@("`@("!S879E5&]K96YS
+M7T=R86TN861D*&UA=&-H97(N9W)O=7`H5&]K96Y4>7!E+DM%65=/4D0N;F%M
+M92@I*2D["B`@("`@("`@("`@("`@("!T;VME;E1Y<&5?1W)A;2YA9&0H(FME
+M>7=O<F0B*3L*"B`@("`@("`@("`@("`@("!C;VYT:6YU93L*("`@("`@("`@
+M("`@?0H@("`@("`@("`@("`O+R!F;&]A="!M871C:&EN9PH@("`@("`@("`@
+M("!E;'-E(&EF("AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y&3$]!5"YN86UE
+M*"DI("$](&YU;&PI('L*("`@("`@("`@("`@("`@('1O:V5N<RYA9&0H;F5W
+M(%1O:V5N*%1O:V5N5'EP92Y&3$]!5"P@;6%T8VAE<BYG<F]U<"A4;VME;E1Y
+M<&4N1DQ/050N;F%M92@I*2DI.PH@("`@("`@("`@("`@("`@<V%V951O:V5N
+M<U]'<F%M+F%D9"AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y&3$]!5"YN86UE
+M*"DI*3L*("`@("`@("`@("`@("`@('1O:V5N5'EP95]'<F%M+F%D9"@B9FQO
+M870B*3L*"B`@("`@("`@("`@("`@("!C;VYT:6YU93L*("`@("`@("`@("`@
+M?0H@("`@("`@("`@("`O+R!.54T@;6%T8VAI;F<*("`@("`@("`@("`@96QS
+M92!I9B`H;6%T8VAE<BYG<F]U<"A4;VME;E1Y<&4N3E5-+FYA;64H*2D@(3T@
+M;G5L;"D@>PH@("`@("`@("`@("`@("`@=&]K96YS+F%D9"AN97<@5&]K96XH
+M5&]K96Y4>7!E+DY532P@;6%T8VAE<BYG<F]U<"A4;VME;E1Y<&4N3E5-+FYA
+M;64H*2DI*3L*("`@("`@("`@("`@("`@('-A=F54;VME;G-?1W)A;2YA9&0H
+M;6%T8VAE<BYG<F]U<"A4;VME;E1Y<&4N3E5-+FYA;64H*2DI.PH@("`@("`@
+M("`@("`@("`@=&]K96Y4>7!E7T=R86TN861D*").54TB*3L*"B`@("`@("`@
+M("`@("`@("!C;VYT:6YU93L*("`@("`@("`@("`@?0H@("`@("`@("`@("`O
+M+R!-:7@@4W!E8VEA;"!S>6UB;VQS(&UA=&-H:6YG"B`@("`@("`@("`@(&5L
+M<V4@:68@*&UA=&-H97(N9W)O=7`H5&]K96Y4>7!E+DU)6%-014-)04PN;F%M
+M92@I*2`A/2!N=6QL*2!["B`@("`@("`@("`@("`@("!T;VME;G,N861D*&YE
+M=R!4;VME;BA4;VME;E1Y<&4N34E84U!%0TE!3"P@;6%T8VAE<BYG<F]U<"A4
+M;VME;E1Y<&4N34E84U!%0TE!3"YN86UE*"DI*2D["B`@("`@("`@("`@("`@
+M("!S879E5&]K96YS7T=R86TN861D*&UA=&-H97(N9W)O=7`H5&]K96Y4>7!E
+M+DU)6%-014-)04PN;F%M92@I*2D["B`@("`@("`@("`@("`@("!T;VME;E1Y
+M<&5?1W)A;2YA9&0H(E-P96-I86P@<WEM8F]L<R(I.PH*("`@("`@("`@("`@
+M("`@(&-O;G1I;G5E.PH@("`@("`@("`@("!]"B`@("`@("`@("`@("\O(%-P
+M96-I86P@<WEM8F]L<R!M871C:&EN9PH@("`@("`@("`@("!E;'-E(&EF("AM
+M871C:&5R+F=R;W5P*%1O:V5N5'EP92Y34$5#24%,+FYA;64H*2D@(3T@;G5L
+M;"D@>PH@("`@("`@("`@("`@("`@=&]K96YS+F%D9"AN97<@5&]K96XH5&]K
+M96Y4>7!E+E-014-)04PL(&UA=&-H97(N9W)O=7`H5&]K96Y4>7!E+E-014-)
+M04PN;F%M92@I*2DI.PH@("`@("`@("`@("`@("`@<V%V951O:V5N<U]'<F%M
+M+F%D9"AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y34$5#24%,+FYA;64H*2DI
+M.PH@("`@("`@("`@("`@("`@=&]K96Y4>7!E7T=R86TN861D*")3<&5C:6%L
+M('-Y;6)O;',B*3L*"B`@("`@("`@("`@("`@("!C;VYT:6YU93L*("`@("`@
+M("`@("`@?0H@("`@("`@("`@("`O+R!)1"!M871C:&EN9PH@("`@("`@("`@
+M("!E;'-E(&EF("AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y)1"YN86UE*"DI
+M("$](&YU;&PI('L*("`@("`@("`@("`@("`@('1O:V5N<RYA9&0H;F5W(%1O
+M:V5N*%1O:V5N5'EP92Y)1"P@;6%T8VAE<BYG<F]U<"A4;VME;E1Y<&4N240N
+M;F%M92@I*2DI.PH@("`@("`@("`@("`@("`@<V%V951O:V5N<U]'<F%M+F%D
+M9"AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y)1"YN86UE*"DI*3L*("`@("`@
+M("`@("`@("`@('1O:V5N5'EP95]'<F%M+F%D9"@B240B*3L*"B`@("`@("`@
+M("`@("`@("!C;VYT:6YU93L*("`@("`@("`@("`@?0H@("`@("`@("`@("`O
+M+R!72$E415-004-%(&UA=&-H:6YG(&%N9"!S:VEP<&EN9PH@("`@("`@("`@
+M("!E;'-E(&EF("AM871C:&5R+F=R;W5P*%1O:V5N5'EP92Y72$E415-004-%
+M+FYA;64H*2D@(3T@;G5L;"D@>PH@("`@("`@("`@("`@("`@8V]N=&EN=64[
+M"@H@("`@("`@("`@("!]"@H*("`@("`@("!]"B`@("`@("`@<F5T=7)N('1O
+0:V5N<SL*("`@('T*"@H*?0H*
+`
+end
+SHAR_EOF
+  (set 20 17 04 04 22 44 12 'Lexical_Analysis.java'; eval "$shar_touch") &&
+  chmod 0644 'Lexical_Analysis.java'
+if test $? -ne 0
+then ${echo} 'restore of Lexical_Analysis.java failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'Lexical_Analysis.java: MD5 check failed'
+       ) << \SHAR_EOF
+446c8f17e37cae4dc1dd03d6a3029422  Lexical_Analysis.java
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'Lexical_Analysis.java'` -ne 5326 && \
+  ${echo} 'restoration warning:  size of Lexical_Analysis.java is not 5326'
+  fi
+fi
+# ============= Main.java ==============
+if test -f 'Main.java' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING Main.java (file already exists)'
+else
+${echo} 'x - extracting Main.java (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'Main.java' &&
+public class Main {
+X
+X    public static void main(String[] args) {
+X
+X
+X        readfile r = new readfile();
+X        //semantic_Analysis s = new semantic_Analysis();
+X        semantic_Analysis_1 s1 = new semantic_Analysis_1();
+X
+X        r.openFile(args[0]);
+X
+X
+X        r.readFile();
+X
+X
+X        r.closeFile();
+X
+X
+X        //s.S();
+X        // Go to Grammar
+X        s1.S_1();
+X
+X
+X
+X
+X
+X
+X
+X    }
+}
+SHAR_EOF
+  (set 20 17 04 02 23 13 53 'Main.java'; eval "$shar_touch") &&
+  chmod 0644 'Main.java'
+if test $? -ne 0
+then ${echo} 'restore of Main.java failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'Main.java: MD5 check failed'
+       ) << \SHAR_EOF
+dccefe283577380eae8a64b294d2ae31  Main.java
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'Main.java'` -ne 378 && \
+  ${echo} 'restoration warning:  size of Main.java is not 378'
+  fi
+fi
+# ============= readfile.java ==============
+if test -f 'readfile.java' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING readfile.java (file already exists)'
+else
+${echo} 'x - extracting readfile.java (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'readfile.java' &&
+import java.io.File;
+import java.util.Scanner;
+import java.lang.String;
+X
+X
+public class readfile
+{
+X
+X    private Scanner x;
+X
+X    public void openFile(String filename)
+X    {
+X        try
+X        {
+X            // read from the file by scanner
+X            // I got this from the java book p678
+X
+X            x = new Scanner(new File(filename));
+X        }
+X        catch (Exception e)
+X        {
+X            System.out.println("could not find file");
+X        }
+X    }
+X
+X    public void readFile()
+X    {
+X        
+X        while(x.hasNext())
+X        {
+X            Lexical_Analysis.main_Parsing(x.nextLine());
+X
+X
+X        }
+X        Lexical_Analysis.saveTokens_Gram.add("$");
+X        Lexical_Analysis.tokenType_Gram.add("$");
+X
+X    }
+X
+X    public void closeFile()
+X    {
+X        x.close();
+X    }
+}
+SHAR_EOF
+  (set 20 17 04 02 23 13 53 'readfile.java'; eval "$shar_touch") &&
+  chmod 0644 'readfile.java'
+if test $? -ne 0
+then ${echo} 'restore of readfile.java failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'readfile.java: MD5 check failed'
+       ) << \SHAR_EOF
+307c005c0cbd75245790c0d57f7fb4b5  readfile.java
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'readfile.java'` -ne 776 && \
+  ${echo} 'restoration warning:  size of readfile.java is not 776'
+  fi
+fi
+# ============= semantic_Analysis_1.java ==============
+if test -f 'semantic_Analysis_1.java' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING semantic_Analysis_1.java (file already exists)'
+else
+${echo} 'x - extracting semantic_Analysis_1.java (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'semantic_Analysis_1.java' &&
+X
+X
+X
+X    public class semantic_Analysis_1 {
+X        // tokenType_saveToken_index
+X        public static int token_index = 0;
+X
+X        public static String currentToken;
+X
+X        private static Lexical_Analysis r ;
+X         //Lexical_Analysis r = new Lexical_Analysis();
+X
+X
+X        public static void getCurrentToken()
+X        {
+X
+X            currentToken = Lexical_Analysis.tokenType_Gram.get(token_index);
+X            //System.out.println("meeee: " + currentToken);
+X            if(currentToken != "ID" && currentToken != "NUM" && currentToken != "float")
+X            {
+X                currentToken = Lexical_Analysis.saveTokens_Gram.get(token_index);
+X            }
+X
+X        }
+X
+X
+X        public void S_1()
+X        {
+X
+X            getCurrentToken();
+X
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float")) {
+X                A();
+X            } else {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void A()
+X        {
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float")) {
+X                B();
+X                dLPrime();
+X            }
+X
+X            else {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void dLPrime()
+X        {
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float")) {
+X                B();
+X                dLPrime();
+X            } else if (currentToken.equals("$"))
+X
+X            {
+X                System.out.println("\nACCEPT");
+X                return;
+X            } else
+X                {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void B()
+X        {
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float"))
+X            {
+X                D();
+X                if (currentToken.equals("ID")) {
+X                    token_index++;
+X                    getCurrentToken();
+X                    dPrime();
+X                } else {
+X                    REJECT_Method();
+X                }
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void dPrime()
+X        {
+X            if (currentToken.equals(";"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if (currentToken.equals("["))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                if(currentToken.equals("NUM"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    if(currentToken.equals("]"))
+X                    {
+X                        token_index++;
+X                        getCurrentToken();
+X                        if(currentToken.equals(";"))
+X                        {
+X                            token_index++;
+X                            getCurrentToken();
+X                        }
+X                        else
+X                        {
+X                            REJECT_Method();
+X                        }
+X
+X                    }
+X                    else
+X                    {
+X                        REJECT_Method();
+X                    }
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X
+X            else if(currentToken.equals("("))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                F();
+X                if(currentToken.equals(")"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    compound_stmt();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X        else
+X        {
+X            REJECT_Method();
+X        }
+X
+X        }
+X
+X        public static void D()
+X        {
+X            if(currentToken.equals("int"))
+X            {
+X                    token_index++;
+X                    getCurrentToken();
+X            }
+X
+X            else if(currentToken.equals("void"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("float"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void F()
+X        {
+X            if (currentToken.equals("int"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                HPrime();
+X                G();
+X
+X            }
+X            else if(currentToken.equals("float"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                HPrime();
+X                G();
+X
+X            }
+X            else if(currentToken.equals("void"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                FPrime();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X
+X        }
+X
+X        public static void FPrime()
+X        {
+X            if (currentToken.equals("ID"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                HPrime();
+X                G();
+X            }
+X            else if(currentToken.equals(")"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X        public static void G()
+X        {
+X            if(currentToken.equals(","))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                H();
+X                G();
+X            }
+X            else if(currentToken.equals(")"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X        public static void H()
+X        {
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float"))
+X            {
+X                D();
+X                HPrime();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void HPrime()
+X        {
+X            if(currentToken.equals("ID"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                HPrime_Prime();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void HPrime_Prime()
+X        {
+X            if(currentToken.equals("[")) {
+X                token_index++;
+X                getCurrentToken();
+X                if (currentToken.equals("]")) {
+X                    token_index++;
+X                    getCurrentToken();
+X                } else {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals(",") || currentToken.equals(")"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void compound_stmt()
+X        {
+X            if(currentToken.equals("{"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                J();
+X                SL();
+X                if(currentToken.equals("}"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void J()
+X        {
+X            if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float"))
+X            {
+X                D();
+X                if(currentToken.equals("ID"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    JPrime();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if ( currentToken.equals("ID") ||  currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals(";") ||  currentToken.equals("if") || currentToken.equals("{")
+X                    || currentToken.equals("while") ||  currentToken.equals("return") ||  currentToken.equals("}"))
+X            {
+X                return;
+X            }
+X
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void JPrime()
+X        {
+X            if(currentToken.equals(";"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                J();
+X            }
+X            else if(currentToken.equals("["))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                if(currentToken.equals("NUM"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    if(currentToken.equals("]"))
+X                    {
+X                        token_index++;
+X                        getCurrentToken();
+X                        if(currentToken.equals(";"))
+X                        {
+X                            token_index++;
+X                            getCurrentToken();
+X                            J();
+X                        }
+X                        else
+X                        {
+X                            REJECT_Method();
+X                        }
+X                    }
+X                    else
+X                    {
+X                        REJECT_Method();
+X                    }
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals(";") || currentToken.equals("if") || currentToken.equals("{")
+X                    || currentToken.equals("while") || currentToken.equals("return") || currentToken.equals("}"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void SL()
+X        {
+X            if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals(";") || currentToken.equals("if") || currentToken.equals("{")
+X                    || currentToken.equals("while") || currentToken.equals("return") || currentToken.equals("float"))
+X            {
+X                statement();
+X                SL();
+X            }
+X            else if(currentToken.equals("}"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void statement()
+X        {
+X            if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                   || currentToken.equals("float") || currentToken.equals(";"))
+X            {
+X                expression_stmt();
+X            }
+X            else if(currentToken.equals("{") )
+X            {
+X                compound_stmt();
+X            }
+X            else if(currentToken.equals("if"))
+X            {
+X                selection_stmt();
+X            }
+X            else if(currentToken.equals("while"))
+X            {
+X                iteration_stmt();
+X            }
+X            else if(currentToken.equals("return"))
+X            {
+X                return_stmt();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void expression_stmt()
+X        {
+X            if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals("float"))
+X            {
+X                expression();
+X                if(currentToken.equals(";"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals(";"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void selection_stmt()
+X        {
+X            if(currentToken.equals("if"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                if(currentToken.equals("("))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    expression();
+X                    if(currentToken.equals(")"))
+X                    {
+X                        token_index++;
+X                        getCurrentToken();
+X                        statement();
+X                        ST();
+X                    }
+X                    else
+X                    {
+X                        REJECT_Method();
+X                    }
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void ST()
+X        {
+X            if(currentToken.equals("else"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                statement();
+X            }
+X            else if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals(";") || currentToken.equals("if") || currentToken.equals("{")
+X                    || currentToken.equals("while") || currentToken.equals("return") || currentToken.equals("}")
+X                    || currentToken.equals("else"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X        public static void iteration_stmt()
+X        {
+X            if (currentToken.equals("while"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                if(currentToken.equals("("))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    expression();
+X                    if(currentToken.equals(")"))
+X                    {
+X                        token_index++;
+X                        getCurrentToken();
+X                        statement();
+X                    }
+X                    else
+X                    {
+X                        REJECT_Method();
+X                    }
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void return_stmt()
+X        {
+X            if(currentToken.equals("return"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression_stmt();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void expression()
+X        {
+X            if(currentToken.equals("ID"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expressionPrime();
+X            }
+X            else if(currentToken.equals("("))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression();
+X                if(currentToken.equals(")"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                    termPrime();
+X                    AEPrime();
+X                    SE();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals("NUM"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                termPrime();
+X                AEPrime();
+X                SE();
+X            }
+X            else if(currentToken.equals("float"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                termPrime();
+X                AEPrime();
+X                SE();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void expressionPrime()
+X        {
+X            if(currentToken.equals("[") || currentToken.equals("=") || currentToken.equals("/")
+X                    || currentToken.equals("*") || currentToken.equals("+") || currentToken.equals("-")
+X                    || currentToken.equals("==") || currentToken.equals("<=") || currentToken.equals(">=")
+X                    || currentToken.equals("!=") || currentToken.equals(">")
+X                    || currentToken.equals("<")  )
+X            {
+X                varPrime();
+X                expressionPrime_Prime();
+X            }
+X            else if(currentToken.equals("("))
+X        {
+X            token_index++;
+X            getCurrentToken();
+X            args();
+X            if(currentToken.equals(")"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                termPrime();
+X                AEPrime();
+X                SE();
+X            }
+X        } else if (currentToken.equals(";") || currentToken.equals(")") || currentToken.equals("]")||
+X                    currentToken.equals(","))
+X            {
+X                return;
+X            }
+X        else
+X        {
+X            REJECT_Method();
+X        }
+X        }
+X
+X        public static void expressionPrime_Prime()
+X        {
+X            if(currentToken.equals("="))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression();
+X            }
+X            else if(currentToken.equals("/") || currentToken.equals("*")
+X                    || currentToken.equals("+") || currentToken.equals("-")
+X                   || currentToken.equals("<") || currentToken.equals(">") || currentToken.equals("==")
+X                    || currentToken.equals("!=")|| currentToken.equals("<=")
+X                    || currentToken.equals(">="))
+X            {
+X                termPrime();
+X                AEPrime();
+X                SE();
+X            }else if (currentToken.equals(";") || currentToken.equals(")") || currentToken.equals("]")|| currentToken.equals(","))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void varPrime()
+X        {
+X            if(currentToken.equals("["))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression();
+X                if(currentToken.equals("]"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals("=") || currentToken.equals("/") || currentToken.equals("*")
+X            || currentToken.equals("+") || currentToken.equals("-")  || currentToken.equals(">") ||
+X                    currentToken.equals("<")|| currentToken.equals("==") || currentToken.equals("!=") ||
+X                    currentToken.equals(";") ||currentToken.equals(")") ||currentToken.equals("]") ||
+X            currentToken.equals(",") || currentToken.equals("<=") || currentToken.equals(">="))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void SE()
+X        {
+X            if(currentToken.equals("<=") || currentToken.equals(">=") || currentToken.equals("==")
+X                    || currentToken.equals("!=") || currentToken.equals("<") ||currentToken.equals(">"))
+X            {
+X                relop();
+X                additive_expression();
+X            }
+X            else if(currentToken.equals(";") || currentToken.equals(")") || currentToken.equals("]")
+X                    || currentToken.equals(","))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void relop()
+X        {
+X            if(currentToken.equals("<="))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals(">="))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("=="))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("!="))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals(">"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("<"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X
+X        public static void additive_expression()
+X        {
+X            if(currentToken.equals("(") || currentToken.equals("ID") || currentToken.equals("NUM")
+X                    || currentToken.equals("float"))
+X            {
+X                term();
+X                AEPrime();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void AEPrime()
+X        {
+X            if(currentToken.equals("+") || currentToken.equals("-"))
+X            {
+X                addop();
+X                term();
+X                AEPrime();
+X            }
+X            else if(currentToken.equals("<") || currentToken.equals(">") || currentToken.equals("==")
+X                    || currentToken.equals("!=") || currentToken.equals(";") || currentToken.equals(")")
+X                    || currentToken.equals("]") || currentToken.equals(",") || currentToken.equals(">=") || currentToken.equals("<=") )
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void addop()
+X        {
+X            if(currentToken.equals("+"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("-"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void term()
+X        {
+X            if(currentToken.equals("(") || currentToken.equals("ID") || currentToken.equals("NUM")
+X                    || currentToken.equals("float"))
+X            {
+X                factor();
+X                termPrime();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void termPrime()
+X        {
+X            if(currentToken.equals("*") || currentToken.equals("/"))
+X            {
+X                mulop();
+X                factor();
+X                termPrime();
+X            }
+X            else if( currentToken.equals("<=") || currentToken.equals(">=") || currentToken.equals("==")
+X                    || currentToken.equals("!=") || currentToken.equals("+") || currentToken.equals("-")
+X                    || currentToken.equals("<") || currentToken.equals(">")
+X                    || currentToken.equals(";") || currentToken.equals(")") || currentToken.equals("]")
+X                    || currentToken.equals(","))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void mulop()
+X        {
+X            if(currentToken.equals("*"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("/"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void factor()
+X        {
+X            if(currentToken.equals("("))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression();
+X                if(currentToken.equals(")"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals("ID"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                factorPrime();
+X            }
+X            else if(currentToken.equals("NUM"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else if(currentToken.equals("float"))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void factorPrime()
+X        {
+X            if(currentToken.equals("["))
+X            {
+X                varPrime();
+X            }
+X            else if(currentToken.equals("("))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                args();
+X                if(currentToken.equals(")"))
+X                {
+X                    token_index++;
+X                    getCurrentToken();
+X                }
+X                else
+X                {
+X                    REJECT_Method();
+X                }
+X            }
+X            else if(currentToken.equals("/") || currentToken.equals("*") || currentToken.equals("+")
+X                    || currentToken.equals("-") || currentToken.equals(";") || currentToken.equals(")")
+X                    || currentToken.equals("]") || currentToken.equals(",") || currentToken.equals("<")
+X                    || currentToken.equals("<=") || currentToken.equals(">=")
+X                    || currentToken.equals(">") || currentToken.equals("==") || currentToken.equals("!="))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X
+X        }
+X        public static void args()
+X        {
+X            if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM"))
+X            {
+X                args_list();
+X            }
+X            else if(currentToken.equals(")"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void args_list()
+X        {
+X            if(currentToken.equals("ID") || currentToken.equals("(") || currentToken.equals("NUM")
+X                    || currentToken.equals("float"))
+X            {
+X                expression();
+X                AL();
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X            }
+X        }
+X
+X        public static void AL()
+X        {
+X            if(currentToken.equals(","))
+X            {
+X                token_index++;
+X                getCurrentToken();
+X                expression();
+X                AL();
+X            }
+X            else if(currentToken.equals(")"))
+X            {
+X                return;
+X            }
+X            else
+X            {
+X                REJECT_Method();
+X
+X            }
+X        }
+X
+X        public static void REJECT_Method()
+X        {
+X            System.out.println("REJECT");
+X            System.exit(1);
+X        }
+X
+X    }
+SHAR_EOF
+  (set 20 17 04 02 23 13 53 'semantic_Analysis_1.java'; eval "$shar_touch") &&
+  chmod 0644 'semantic_Analysis_1.java'
+if test $? -ne 0
+then ${echo} 'restore of semantic_Analysis_1.java failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'semantic_Analysis_1.java: MD5 check failed'
+       ) << \SHAR_EOF
+17feef855721980b39e42c20fc540948  semantic_Analysis_1.java
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'semantic_Analysis_1.java'` -ne 28161 && \
+  ${echo} 'restoration warning:  size of semantic_Analysis_1.java is not 28161'
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} 'x - removed lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to remove lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+exit 0

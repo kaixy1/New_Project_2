@@ -1,0 +1,6 @@
+int hello(int i)
+{
+if (i == 0)
+return;
+
+}
