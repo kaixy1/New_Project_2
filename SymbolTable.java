@@ -3,26 +3,25 @@ import java.util.HashMap;
 public class SymbolTable
 {
 
-    HashMap<String,String> symTable;
+    static HashMap<String,String> symTable= new HashMap();
 
     public SymbolTable(){
-        HashMap<String, String> symTable = new HashMap(10);
-        symTable.put("retType", "Test");
     }
 
-    public HashMap<String, String> getSymTable()
+    public static HashMap<String, String> getSymTable()
     {
         return symTable;
     }
 
-    public void setSymTable(String key, String val)
+    public static void setSymTable(String key, String val)
     {
-        if (key == null) throw new IllegalArgumentException("calls put() with null key");
+        //if (symTable.put(key, val) == null) System.out.println(" oo[s");;
+        System.out.println("size of : " + symTable.size() );
+           String  mystring =  symTable.put(key, val);
 
-        symTable.put(key, val);
     }
 
-    public boolean isInSymTbl(String key)
+    public static boolean isInSymTbl(String key)
     {
 
         return symTable.containsKey(key);

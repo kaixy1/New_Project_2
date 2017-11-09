@@ -1,10 +1,13 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class semantic_Analysis_1 {
         // tokenType_saveToken_index
         public static int token_index = 0;
-        SymbolTable mysym = new SymbolTable();
+        public static int scope =  0;
+        //SymbolTable symb = new SymbolTable();
         LinkedList mylink = new LinkedList();
+        HashMap<String,String> symTable= new HashMap();
 
         public static String currentToken;
 
@@ -74,12 +77,14 @@ public class semantic_Analysis_1 {
         {
             if (currentToken.equals("int") || currentToken.equals("void") || currentToken.equals("float"))
             {
-                mysym.setSymTable("ReType", currentToken);
-                mylink.add(mysym);
+                symTable.put("RetType",currentToken);
+
+                mylink.add(scope, symTable);
 
                 D();
                 if (currentToken.equals("ID")) {
-
+                    symTable.put("FuncName", currentToken);
+                   // mylink.add(scope,symTable);
 
                     token_index++;
                     getCurrentToken();
